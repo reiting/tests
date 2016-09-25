@@ -102,9 +102,10 @@ var dayOfYear = today - yearFirstDay;
 
 // var timestmp = new Date().setFullYear(new Date().getFullYear(), 0, 1);//gets the first of the year
 // var dayOfFirstOfYear= timestmp.getday();//gets 0 index # for first day of the year
+// var weekCount;
 
 // if (dayOfFirstOfYear != 0) {
-// var daysOfYearMinusFirstWeek = dayOfYear-(7-dayOfFirstOfYear);//subtracts days of first week if the first week 
+// var daysOfYearMinusFirstWeek = dayOfYear -(7-dayOfFirstOfYear);//subtracts days of first week if the first week 
 // //didn't start on a Sunday'Year-(7-dayOfFirstOfYear);
 // 	weekCount ++;//adds 1 to the week count if the first week of the year was not 7 days long
 // 	var weekCount = daysOfYearMinusFirstWeek / 7;
@@ -115,6 +116,9 @@ var dayOfYear = today - yearFirstDay;
 	
 // 	}
 // }
+
+
+
 
 
 
@@ -235,7 +239,13 @@ var dayOfYear = today - yearFirstDay;
 				return currentDay.substring (0,2);
 			},
 			WeekOfYear: function(){
-				
+				 var now = new Date();
+                                var start = new Date(now.getFullYear(), 0, 0);
+                                var diff = now - start;
+                                var oneDay = 1000 * 60 * 60 * 24;
+                                var day = Math.floor(diff / oneDay);
+                                return String(Math.round(day / 7));
+                                ;
 			}
 		}
 	})(),
