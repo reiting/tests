@@ -93,6 +93,39 @@ var today = Math.ceil((new Date().getTime()) / 86400000);
 var dayOfYear = today - yearFirstDay;
 
 
+
+
+
+
+
+
+
+// var timestmp = new Date().setFullYear(new Date().getFullYear(), 0, 1);//gets the first of the year
+// var dayOfFirstOfYear= timestmp.getday();//gets 0 index # for first day of the year
+
+// if (dayOfFirstOfYear != 0) {
+// var daysOfYearMinusFirstWeek = dayOfYear-(7-dayOfFirstOfYear);//subtracts days of first week if the first week 
+// //didn't start on a Sunday'Year-(7-dayOfFirstOfYear);
+// 	weekCount ++;//adds 1 to the week count if the first week of the year was not 7 days long
+// 	var weekCount = daysOfYearMinusFirstWeek / 7;
+// 	var moduloDaysOfYear = daysOfYearMinusFirstWeek % 7;//divides # of days in the year by 7 and gets the remainder
+// 	if moduloDaysOfYear != 0 {//if there was a remainder when divinding days of the year by 7
+// 		weekCount++;//add 1 to the week 
+	
+	
+// 	}
+// }
+
+
+
+
+
+
+
+
+
+
+
   return {
 	TimeStamp: (function(){
    	  return {
@@ -202,7 +235,7 @@ var dayOfYear = today - yearFirstDay;
 				return currentDay.substring (0,2);
 			},
 			WeekOfYear: function(){
-
+				
 			}
 		}
 	})(),
@@ -251,7 +284,7 @@ var dayOfYear = today - yearFirstDay;
 						return dayOfYear.toString();
 					},
 					Ordinal: function(){
-
+						return (dayOfYear + ordinalDay).toString();
 					}
 				}
 			})(),
@@ -265,7 +298,7 @@ var dayOfYear = today - yearFirstDay;
 		}
 	})(),
 	Defaults: function(){
-		return (Year + "-" + monthDblDigit + "-" + dayDblDigit + "T" + twentyFourHour + ":" + m + ":" + s).toString();
+		return (Year + "-" + monthDblDigit + "-" + dayDblDigit + "T" + h + ":" + m + ":" + s).toString();
 	}
   }
 })();
