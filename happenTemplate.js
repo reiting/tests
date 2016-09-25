@@ -36,7 +36,7 @@ var library = (function() {
 						return ("AM");
 						}
 	}();
-
+	//get twelve hour time
 	var twelveHour = function() {
 				if (twentyFourHour <= 12) {
 					return twentyFourHour;
@@ -53,12 +53,28 @@ var library = (function() {
     	return i;
 		}
 
+	//variables for hour, minute, and second
     var h = addZero(new Date().getHours());
     var m = addZero(new Date().getMinutes());
     var s = addZero(new Date().getSeconds());
 
+	//gets double digit month
+	var monthDblDigit = function() {
+		if (monthNumber < 10) {
+				return ("0" + monthNumber.toString());
+				} else {
+					return monthNumber.toString();
+				}
+	}();
 
-
+	//gets double digit day
+	var dayDblDigit = function() {
+		if (dayMonth < 10) {
+						return ("0" + dayMonth.toString());
+						} else {
+							return dayMonth.toString();
+						}
+	}();
 
 	//function to get the ordinal day 
 	var ordinalDay = function() {
@@ -69,6 +85,12 @@ var library = (function() {
 		else if ((dayMonth % 10) == 3) return "rd";
 		else return "th";
 	}();
+
+//gets day of Year
+var timestmp = new Date().setFullYear(new Date().getFullYear(), 0, 1);
+var yearFirstDay = Math.floor(timestmp / 86400000);
+var today = Math.ceil((new Date().getTime()) / 86400000);
+var dayOfYear = today - yearFirstDay;
 
 
   return {
@@ -99,10 +121,10 @@ var library = (function() {
 		MDY: (function(){
 	  	  return {
 		    Numeral: function(){
-
+				return (monthNumber + "/" + dayDblDigit + "/" + Year).toString();
 				},
 			Name: function(){
-
+				return (currentMonth + " " + dayDblDigit + "," + " " + Year).toString();
 			}
 		  }
 		  })(),
@@ -226,7 +248,7 @@ var library = (function() {
 			DayOfYear: (function(){
 				return {
 					Numeral: function(){
-
+						return dayOfYear.toString();
 					},
 					Ordinal: function(){
 
@@ -243,7 +265,7 @@ var library = (function() {
 		}
 	})(),
 	Defaults: function(){
-
+		return (Year + "-" + monthDblDigit + "-" + dayDblDigit + "T" + twentyFourHour + ":" + m + ":" + s).toString();
 	}
   }
 })();
